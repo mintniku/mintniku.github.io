@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>법무법인 유현</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.css">
+    <style>
+        :root {
+            --primary-color: #1b2838;
+            --secondary-color: #2d3f53;
+            --accent-color: #ffffff;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .navbar {
+        background-color: rgba(27, 40, 56, 0.5) !important;
+        padding: 20px 0;
+        transition: background-color 0.3s ease;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.scrolled {
+        background-color: rgba(27, 40, 56, 0.85) !important;
+    }
+
+    title {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+        }
+    
+    .navbar-brand {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #fff !important;
+            letter-spacing: -0.03em;
+        }
+
+    .nav-link {
+        color: #fff !important;
+        font-weight: 500;
+        margin: 0 15px;
+        transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+
+.hero-section {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        padding-top: 0;
+    }
+
+.content-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        padding-top: 60px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.7s ease;
+        overflow: hidden;
+    }
+
+
+.hero-content {
+    text-align: center;
+    color: white;
+    width: 100%;
+    padding: 0 20px;
+    transform: none !important; /* 기존 트랜스폼 제거 */
+    transition: opacity 0.7s ease;
+}
+
+.fp-section {
+    height: 100vh !important;
+}
+
+    .search-container {
+        margin: 30px auto;
+        max-width: 600px;
+    }
+
+    .search-box {
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .search-input {
+        border: none;
+        width: 90%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .practice-areas {
+        padding: 40px 80px 80px;
+        background: linear-gradient(to bottom, #fff, #f8f9fa);
+    }
+
+    .practice-areas .container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #333;
+        text-align: center;
+        margin-bottom: 40px;
+        letter-spacing: -0.5px;
+    }
+
+    .practice-card {
+        background: #f5f5f5;
+        padding: 40px;
+        margin: 15px 0;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .row.g-4 {
+        margin: 0 -20px;
+    }
+
+    .col-md-6 {
+        padding: 0 20px;
+    }
+
+    .lawyers-section {
+        padding: 40px 80px 80px;
+        background: #fff;
+    }
+
+    .section {
+        overflow: hidden;
+        padding-top: 80px;
+    }
+
+    #fp-nav ul li a span {
+        background: #fff;
+    }
+
+    .lawyer-card {
+        background: #f5f5f5;
+        padding: 40px;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05)
+    }
+
+    .lawyer-image {
+        width: 200px;
+        height: 250px;
+        margin: 0 auto 30px;
+        overflow: hidden;
+    }
+
+    .lawyer-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .lawyer-info {
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .lawyer-info h4 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+    }
+
+    .position {
+        color: #555;
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        font-weight: 500;
+        position: relative;
+        display: inline-block;
+    }
+
+    .position::after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 2px;
+        background-color: var(--primary-color);
+    }
+
+    .credentials {
+        text-align: left;
+        padding: 30px 5px 0;
+        border-top: 1px solid #eee;
+        margin-top: 10px;
+    }
+
+    .credential-section {
+        margin-bottom: 35px;
+    }
+
+    .credential-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .credential-section h5 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #eee;
+        position: relative;
+    }
+
+    .credential-section h5::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--primary-color);
+    }
+
+    .credential-section p {
+        margin-bottom: 8px;
+        color: #555;
+        font-size: 1rem;
+        line-height: 1.7;
+        padding-left: 15px;
+        position: relative;
+    }
+
+    .credential-section p::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: #999;
+    }
+
+    .footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 30px 0;
+    width: 1200px;  /* content-wrapper와 동일한 최대 너비 */
+    margin: 0 auto;  /* 중앙 정렬 */
+    border-radius: 4px;  /* 선택적: 모서리를 약간 둥글게 */
+    margin-bottom: 30px;  /* 하단 여백 추가 */
+}
+
+.footer .container {
+    max-width: 1000px;  /* 내부 컨텐츠 너비 제한 */
+    margin: 0 auto;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">법무법인 유현</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">회사소개</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#practice">업무분야</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">변호사소개</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#news">법률소식</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">상담문의</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="fullpage">
+        <div class="section hero-section">
+            <div class="hero-content">
+                <h1 class="mb-4">최상의 법률 서비스를 제공합니다</h1>
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="검색어를 입력하세요">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section practice-section">
+            <div class="content-wrapper">
+                <section class="practice-areas" id="practice">
+                    <div class="container">
+                        <h2 class="section-title">주요 업무 분야</h2>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="practice-card">
+                                    <div class="card-icon">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </div>
+                                    <h4>민사소송</h4>
+                                    <p>계약분쟁, 금전청구, 손해배상</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="practice-card">
+                                    <div class="card-icon">
+                                        <i class="fas fa-gavel"></i>
+                                    </div>
+                                    <h4>형사소송 / 군 사건</h4>
+                                    <p>형사고소, 군인 징계, 고발, 변호</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="practice-card">
+                                    <div class="card-icon">
+                                        <i class="fas fa-landmark"></i>
+                                    </div>
+                                    <h4>행정소송</h4>
+                                    <p>행정처분 취소, 법률자문</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="practice-card">
+                                    <div class="card-icon">
+                                        <i class="fas fa-copyright"></i>
+                                    </div>
+                                    <h4>지식재산권</h4>
+                                    <p>특허, 상표, 저작권 분쟁</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="section lawyer-section">
+            <div class="content-wrapper">
+                <section class="lawyers-section" id="team">
+                    <div class="container">
+                        <h2 class="section-title">변호사 소개</h2>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="lawyer-card">
+                                    <div class="lawyer-image">
+                                        <img src="C:\Users\김현욱\Desktop\KakaoTalk_20250115_171555197.jpg" alt="김현욱 변호사">
+                                    </div>
+                                    <div class="lawyer-info">
+                                        <h4>김현욱</h4>
+                                        <p class="position">대표 변호사</p>
+                                        <div class="credentials">
+                                            <div class="credential-section">
+                                                <h5>학력</h5>
+                                                <p>대전 만년고등학교</p>
+                                                <p>연세대학교 국어국문학과</p>
+                                                <p>한양대학교 법학전문대학원</p>
+                                            </div>
+                                            <div class="credential-section">
+                                                <h5>경력</h5>
+                                                <p>공군작전사령부 징계/송무담당</p>
+                                                <p>공군 제39정찰비행단 징계/인권 담당</p>
+                                            </div>
+                                            <div class="credential-section">
+                                                <h5>기타</h5>
+                                                <p>영어</p>
+                                                <p>일본어</p>
+                                                <p>중국어</p>
+                                                <p>컴퓨터공학학사</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>법무법인 유현</h5>
+                            <p>서울특별시 강남구 테헤란로 123길 45<br>
+                            Tel: 02-1234-5678</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <h5>업무시간</h5>
+                            <p>평일 09:00 - 18:00<br>
+                            점심시간 12:00 - 13:00</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3 pt-2 border-top">
+                        <p class="mb-0">© 2025 법무법인 유현</p>
+                    </div>
+                </div>
+            </footer>
+            </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/vendors/scrolloverflow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.extensions.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                autoScrolling: true,
+        scrollHorizontally: false, /* 가로 스크롤 비활성화 */
+        normalScrollElements: '.footer', /* 푸터 영역 일반 스크롤 허용 */
+        scrollOverflow: true, /* 내용 초과시 스크롤 허용 */
+        paddingTop: '80px',
+                easingcss3: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+                onLeave: function(index, nextIndex, direction) {
+                    if(index == 1 && direction == 'down') {
+                        $('.hero-content').css('opacity', '0');
+                    }
+                    if(nextIndex == 1) {
+                        $('.hero-content').css('opacity', '1');
+                    }
+                },
+                afterLoad: function(anchorLink, index) {
+                    if(index == 2 || index == 3 || index == 4) {
+                        $('.content-wrapper').eq(index-2).css({
+                            'opacity': '1',
+                            'transform': 'translateY(0)'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
